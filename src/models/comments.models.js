@@ -4,7 +4,7 @@ const db = require('../utils/database')
 const Users = require('./users.models')
 const Posts = require('./posts.models')
 
-const Comments = db.define('likes', {
+const Comments = db.define('comments', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true

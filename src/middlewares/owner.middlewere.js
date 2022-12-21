@@ -8,7 +8,7 @@ const ownerValidate = (req,res,next)=>{
         if (data.userId == userId ) {
             next()
         }else{
-            res.status(400).json({message: 'Only the owner can update it'})
+            res.status(400).json({message: 'you are not allowed to perform this action'})
         }
     })
     .catch(err=> res.status(400).json({message: err.message}))

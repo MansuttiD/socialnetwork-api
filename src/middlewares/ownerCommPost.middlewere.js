@@ -8,7 +8,7 @@ const ownerCommPost = (req,res,next)=>{
         if (data.userId == userId || data.post.userId == userId) { //? si el id del que esta logueado es igual al id del que creo el post se puede borrar || si el id del que creo el post  == al id del que esta logueado se puede borrar
             next()
         }else{
-            res.status(400).json({message: 'Only the owner can update it'})
+            res.status(400).json({message: 'you are not allowed to perform this action'})
         }
     })
     .catch(err=> res.status(400).json({message: err.message}))
