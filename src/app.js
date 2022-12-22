@@ -1,8 +1,10 @@
 //? Dependencies
 const express = require('express')
 const cors = require('cors')
+const swaggerUI = require('swagger-ui-express')
 
 //? Files
+const swaggerDoc = require('../swagger.json')
 const config = require('../config')
 const db = require('./utils/database')
 const initModels = require('./models/initModels')
@@ -44,6 +46,7 @@ app.get('/', (req, res) => {
             comments: "/api/v1/post/:id/comments",
             comment: "/api/v1/post/:id/comments/:comment_id",
             likes: "/api/v1/post/:id/likes",
+            follow:"/api/v1/users/:id/follow",
             follows: "/api/v1/follows",
             followers: "/api/v1/followers"
         }
@@ -51,6 +54,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/post', postsRouter)
 app.use('/api/v1', followsRouter)
