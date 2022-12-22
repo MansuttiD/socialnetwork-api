@@ -8,20 +8,20 @@ const Follows = db.define('follows', {
         type: DataTypes.UUID,
         primaryKey: true
     },
-    userId:{
+    userId:{ //? el que sigue
         type: DataTypes.UUID,
         allowNull: false,
-        field: 'followingId',
+        field: 'followersId',
         comment: 'Follower',
         references: {
             key: 'id',
             model: Users
         },
     },
-    userId2:{
+    userId2:{ //? al que siguen
         type: DataTypes.UUID,
         allowNull: false,
-        field: 'followersId',
+        field: 'followingId',
         comment: 'Followed',
         references: {
             key: 'id',
